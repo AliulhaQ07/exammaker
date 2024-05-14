@@ -17,11 +17,17 @@ Including another URLconf
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from exammakerapp import views
 
 from exammaker import settings
 
 urlpatterns =  ([
     path('admin/', admin.site.urls),
+    path('contact', views.contact, name='contact'),
+    path('createexam', views.create_exam, name='createexam'),
+    # path('viewexam', views.view_exam, name='viewexam'),
+    path('', views.index, name='index'),
+    path('testimonials', views.testimonials, name='testimonials'),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
