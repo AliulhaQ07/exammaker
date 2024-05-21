@@ -6,7 +6,7 @@
     <meta name = "viewport"
           content = "width=device-width, user-scalable=no, initial-scale=1">
     <meta http-equiv = "X-UA-Compatible" content = "ie=edge">
-     <title>Exam Maker</title>
+    <title>Exam Maker</title>
     <link rel = "stylesheet" href = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
           integrity = "sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin = "anonymous">
     {# bootstrap icons cdn#}
@@ -14,65 +14,82 @@
     {# custom css files #}
     <link rel = "icon" type = "image/x-icon" href = "/media/ema.png">
 
+    <link rel = "stylesheet" href = "{% static 'index.css' %}">
 
 </head>
 <body>
- {# HEADER #}
-    {% block content %}
-    {% include 'header.html'  %}
-    {% endblock %}
+{# HEADER #}
+{% block content %}
+    {% include 'header.html' %}
+{% endblock %}
 
-    <h1 class="display-5"> CRETATE EXAM PAGE</h1>
+<section class = "bg-section">
+
+    <form action = "#" class = "container-lg">
+        <p class = " display-5 text-center ">Create Exam</p>
+        <div class = "row">
+
+            <div class = "col">
+                <label for = "examtitle" class = "form-label">Exam Title</label>
+                <input type = "text" class = "form-control" id = "examtitle">
+
+                <label for = "duration" class = "form-label mt-3">Exam Duration</label>
+                <input type = "text" class = "form-control" id = "duration">
+
+                <div>
+                    <p class = "lead mt-3">Multiple Choice Questions</p>
+                    {#----FOR ADDING FIELDS THROUGHT JAVASCRIPT----#}
+
+                    <div id = "mcqsContainer">
+                        <!-- Dynamic MCQ fields will be added here -->
+                    </div>
+
+                    <button class = "btn btn-dark" id = "addMcqsBtn" type = "button">Add MCQ</button>
+                    <button class = "btn btn-dark" type = "button" id = "saveMcqsBtn">Save MCQ</button>
+                </div>
 
 
- {#FOOTER#}
-<section style = "padding: 60px; ">
+                <div>
+                    <p class = "lead mt-3">Subjective Questions</p>
+                    <button class = "btn btn-dark" id = "addquestions" type = "button">Add Questions</button>
+                </div>
 
-    <div class = "container-xxl">
-        <footer class = "row row-cols-1 row-cols-sm-2 row-cols-md-5 row-cols-lg-3 row-cols-xxl-3">
 
-            <div class = "col-xxl-3 ">
-                <a href = "/" class = "d-flex align-items-center">
-                    <img src = "/media/cover.png" alt = "logo" class = "img-fluid border rounded ">
-                </a>
+                <div>
+                    <p class = "lead mt-3">Instructions</p>
+                    <button class = "btn btn-dark" id = "instructions" type = "button">Add Instructions</button>
+                </div>
+
+
+            </div>
+            {#-----------------------------------------------------#}
+            <div class = "col">
+                <label for = "instructor" class = "form-label">Instructor</label>
+                <input type = "text" class = "form-control" id = "instructor">
+
+                <label for = "marks" class = "form-label mt-3">Total Marks</label>
+                <input type = "text" class = "form-control" id = "marks">
 
             </div>
 
-
-            <div class = "col-xxl-3 ">
-                <h5>Product</h5>
-                <ul class = "nav flex-column">
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">Features</a></li>
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">Pricing</a></li>
-                </ul>
-            </div>
+        </div>
+    </form>
 
 
-            <div class = "col-xxl-3">
-                <h5>Company</h5>
-                <ul class = "nav flex-column">
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">About</a></li>
-                    <li class = "nav-item mb-2"><a href = "{% url 'contact' %}" class = "nav-link p-0 text-muted">Contact Us</a></li>
-                </ul>
-            </div>
-
-            <div class = "col-xxl-3 ">
-                <h5>Socials</h5>
-                <ul class = "nav flex-column">
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">Instagram</a></li>
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">Twitter</a></li>
-                    <li class = "nav-item mb-2"><a href = "#" class = "nav-link p-0 text-muted">Facebook</a></li>
-                </ul>
-            </div>
-
-        </footer>
-        <p class = "text-center text-muted mt-5 pt-3">© 2024 AR Technologies, Inc. All rights reserved.</p>
-
-    </div>
 </section>
 
 
+{##}
+{#{% block footer %}#}
+{#    {% include 'footer.html' %}#}
+{#{% endblock %}#}
+
 
 <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity = "sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin = "anonymous"></script>
+
+<script src = "{% static 'js/createexam.js' %}"></script>
+
+
 </body>
+
 </html>
